@@ -1,4 +1,3 @@
--- i was too lazy to put all the buttons into different sections, feel free to do it yourself
 -- https://github.com/shlexware/Rayfield/blob/main/Documentation.md
 
 local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
