@@ -44,6 +44,84 @@ Rayfield:Notify(
 local Tab = Window:CreateTab("Main", 4483362458)
 local Section = Tab:CreateSection("Main")
 
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Self Authorize",
+        Callback = function()
+        	
+			local args = {
+				[1] = game.Players.LocalPlayer.Name
+			}
+
+			game:GetService("ReplicatedStorage").Events.Remotes.Testing.TagUsers:FireServer(unpack(args))
+
+        end
+    }
+)
+
+local Input =
+    Tab:CreateInput(
+    {
+        Name = "Authorize:",
+        PlaceholderText = "Username",
+        RemoveTextAfterFocusLost = false,
+        Callback = function(Text)
+            for i, v in pairs(game.Players:GetPlayers()) do
+                if v.Name == Text then
+
+					local args = {
+						[1] = Text
+					}
+
+					game:GetService("ReplicatedStorage").Events.Remotes.Testing.TagUsers:FireServer(unpack(args))
+					
+					wait(0.5)
+					
+					local args = {
+                            [1] = Text
+                        }
+
+                    game:GetService("ReplicatedStorage").Events.Remotes.Testing.TagEtc:FireServer(unpack(args))
+                    
+                
+				end
+            end
+        end
+    }
+)
+
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Authorize All",
+        Callback = function()
+        	
+			for i, v in pairs(game.Players:GetPlayers()) do
+                if v then
+
+					local args = {
+						[1] = v.Name
+					}
+
+					game:GetService("ReplicatedStorage").Events.Remotes.Testing.TagUsers:FireServer(unpack(args))
+					
+					local args = {
+                            [1] = v.Name
+                        }
+
+                    game:GetService("ReplicatedStorage").Events.Remotes.Testing.TagEtc:FireServer(unpack(args))
+                    
+                
+				end
+            end
+
+        end
+    }
+)
+
+local Section = Tab:CreateSection("Moderation")
+
 local Toggle =
     Tab:CreateToggle(
     {
